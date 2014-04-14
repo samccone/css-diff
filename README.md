@@ -16,15 +16,16 @@ The command line interface takes 2 paths to css files as well as an options `-v`
 ## In your code
 
 * `$ npm install css-diff --save`
-* ```js
-    require("css-diff")({
-      files: [
-        "path/to/file1.css",
-        "path/to/file2.css"
-      ],
-      visual: true //defaults to false
-    }).then(function(diff) {
-      console.log(diff.visual);
-      console.log(diff.different);
-    })
-  ```
+
+```js
+require("css-diff")({
+  files: [
+    "path/to/file1.css",
+    "path/to/file2.css"
+  ],
+  visual: true //defaults to false
+}).then(function(diff) {
+  console.log(diff.visual);
+  console.log(diff.different);
+})
+```
