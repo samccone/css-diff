@@ -1,0 +1,16 @@
+{
+  "name": "css-diff",
+  "version": "0.1.0",
+  "bin": "bin/index.js",
+  "dependencies": {
+    "css-parse": "~1.7.0",
+    "minimist": "0.0.8",
+    "bluebird": "~1.2.2",
+    "colors": "~0.6.2",
+    "diff": "~1.0.8"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "should": "~3.3.0"
+  }
+}
