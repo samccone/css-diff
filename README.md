@@ -1,7 +1,7 @@
 CSS Diff
 --------
 
-Compare two CSS files at an AST level.
+Compare two CSS files at a [Parse Tree][1] level.
 Useful when you are comparing the output of two versions of a library implemented in different preprocessor libraries.
 
 # Using
@@ -29,3 +29,5 @@ require("css-diff")({
   console.log(diff.different);
 })
 ```
+
+[1]:http://en.wikipedia.org/wiki/Parse_tree
