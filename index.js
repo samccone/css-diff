@@ -2,8 +2,9 @@ require('colors');
 
 var cssParse  = require('css-parse');
 var Promise   = require('bluebird');
-var Diff      = require('diff')
-var Read      = Promise.promisify(require('fs').readFile);
+var Diff      = require('diff');
+var Compiler  = require("./lib/compiler.js");
+var Path      = require('path');
 
 module.exports = function(options) {
   this.options = options;
@@ -41,9 +42,9 @@ function getContents(files) {
   }
 
   return Promise.all(files.map(function(path) {
-    return Read(path, "utf8")
-    .then(function(contents) {
-      return JSON.stringify(cssParse(contents).stylesheet.rules, null, 4)
+    return Compiler(Path.resolve(path))
+    .then(function(css) {
+      return JSON.stringify(cssParse(css).stylesheet.rules, null, 4)
     });
   }));
 }

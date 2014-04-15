@@ -1,17 +1,18 @@
 CSS Diff
 --------
 
-Compare two CSS files at a [Parse Tree][1] level.
+Compare two CSS/STYLUS/SCSS files at a [Parse Tree][1] level.
 Useful when you are comparing the output of two versions of a library implemented in different preprocessor libraries.
+This tool makes it simple to see if the compiled output of a stylus file matches the compiled output of a scss file.
 
 # Using
 
 ## Command Line
 
-The command line interface takes 2 paths to css files as well as an options `-v` or `--visual` argument to print the diff. The return value of the invokation with be `true` or `false`.
+The command line interface takes 2 paths to css/styl/scss files as well as an options `-v` or `--visual` argument to print the diff. The return value of the invokation with be `true` or `false`.
 
 * `$ npm install css-diff`
-* `$ node_modules/.bin/css-diff path/to/file.css path/to/file2.css -v`
+* `$ node_modules/.bin/css-diff path/to/file.styl path/to/file2.css -v`
 
 ## In your code
 
@@ -21,7 +22,7 @@ The command line interface takes 2 paths to css files as well as an options `-v`
 require("css-diff")({
   files: [
     "path/to/file1.css",
-    "path/to/file2.css"
+    "path/to/file2.scss"
   ],
   visual: true //defaults to false
 }).then(function(diff) {
