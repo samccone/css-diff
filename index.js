@@ -37,7 +37,7 @@ function generateDiff(diff) {
 
 function getContents(files) {
   if (files.length < 2) {
-    throw new Error("you must pass 2 file paths in")
+    return new Error("you must pass 2 file paths in")
   }
 
   return Promise.all(files.map(function(path) {
