@@ -1,6 +1,6 @@
 {
   "name": "css-diff",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "bin": "bin/index.js",
   "dependencies": {
     "css-parse": "~1.7.0",
