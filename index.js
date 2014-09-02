@@ -9,7 +9,7 @@ var Path      = require('path');
 module.exports = function(options) {
   this.options = options;
 
-  return getContents(options.files)
+  return getContents.call(this, options.files)
   .spread(Diff.diffLines)
   .then(generateDiff)
   .catch(handleError)
@@ -37,6 +37,8 @@ function generateDiff(diff) {
 }
 
 function getContents(files) {
+  var _this = this;
+
   if (files.length < 2) {
     return new Error("you must pass 2 file paths in")
   }
@@ -44,7 +46,11 @@ function getContents(files) {
   return Promise.all(files.map(function(path) {
     return Compiler(Path.resolve(path))
     .then(function(css) {
-      return JSON.stringify(cssParse(css).stylesheet.rules, null, 4)
+      var rules = cssParse(css).stylesheet.rules;
+
+      return JSON.stringify(rules.filter(function(rule) {
+        return !~_this.options.omit.indexOf(rule.type)
+      }), null, 4)
     });
   }));
 }

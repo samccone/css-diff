@@ -24,6 +24,9 @@ require("css-diff")({
     "path/to/file1.css",
     "path/to/file2.scss"
   ],
+  omit: [ //optional ability to omit rule types
+    "comment"
+  ]
   visual: true //defaults to false
 }).then(function(diff) {
   console.log(diff.visual);
