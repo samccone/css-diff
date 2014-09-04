@@ -3,11 +3,12 @@
   "version": "0.3.0",
   "bin": "bin/index.js",
   "dependencies": {
-    "css-parse": "~1.7.0",
-    "minimist": "0.0.8",
     "bluebird": "~1.2.2",
+    "clean-css": "^2.2.15",
     "colors": "~0.6.2",
-    "diff": "~1.0.8"
+    "css-parse": "~1.7.0",
+    "diff": "~1.0.8",
+    "minimist": "0.0.8"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
