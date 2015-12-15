@@ -21,6 +21,49 @@ function handleError(e) {
 }
 
 function generateDiff(diff) {
+  var _this = this;
+  if (_this.options.updates) {
+      return generateUpdatesDiff(diff);
+  }
+  return generateOrigDiff(diff);
+}
+
+function generateUpdatesDiff(diff) {
+  var markedCss = diff.reduce(function(prev, part) {
+    return prev + (part.added || (!part.added && !part.removed) ? part.value : "") + (part.added ? '\n, "changed": "true"' : "");
+  }, "");
+  var changedRules = JSON.parse(markedCss)
+  .filter(function(o) {
+    return o.type === "rule";
+  })
+  .reduce(function(prev, rule) {
+    var declarations = rule.declarations.reduce(function(prev, declaration) {
+      if (declaration.changed) prev.push(declaration);
+      return prev;
+    }, []);
+    if (declarations.length) prev.push({
+      type: rule.type,
+      selectors: rule.selectors,
+      declarations: declarations
+    });
+    return prev;
+  }, []);
+  var updates = changedRules.reduce(function(prev, rule) {
+    rule.selectors.forEach(function(selector) {
+      prev += selector + '{';
+      rule.declarations.forEach(function(declaration) {
+        prev += declaration.property + ':' + declaration.value + ';';
+      });
+      prev += '}\n';
+    });
+    return prev;
+  }, "");
+  return {
+    updates: updates
+  };
+}
+
+function generateOrigDiff(diff) {
   var different   = false;
   var visual      = diff.reduce(function(prev, part) {
     var color = part.added ? "green" : part.removed ? "red" : "grey";
