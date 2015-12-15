@@ -7,7 +7,8 @@ var args = minimist(process.argv.slice(2));
 
 diff({
   files: args["_"] || [],
-  visual: args["v"] || args["visual"] || false
+  visual: args["v"] || args["visual"] || false,
+  omit: args["o"] || args["omit"] || []
 })
 .done(function(diff) {
   if (options.visual) {
