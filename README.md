@@ -9,7 +9,7 @@ This tool makes it simple to see if the compiled output of a stylus file matches
 
 ## Command Line
 
-The command line interface takes 2 paths to css/styl/scss files as well as an options `-v` or `--visual` argument to print the diff. The return value of the invokation with be `true` or `false`.
+The command line interface takes 2 paths to css/styl/scss files as well as an options `-v` or `--visual` argument to print the diff or `-u` or `--updates` argument to print updated rules. The return value of the invokation with be `true` or `false`.
 
 * `$ npm install css-diff`
 * `$ node_modules/.bin/css-diff path/to/file.styl path/to/file2.css -v`
